@@ -1,10 +1,10 @@
 import React from 'react';
 import {ActivityIndicator, Text, View} from 'react-native';
-import {useGetEvents} from '../hooks/events';
+import {useEvents} from '../hooks/events';
 import EventList from '../components/events/list';
 
 export default function HomeScreen() {
-  const {data, status} = useGetEvents();
+  const {data, status} = useEvents();
 
   if (status === 'pending') {
     return <ActivityIndicator size={'large'} />;

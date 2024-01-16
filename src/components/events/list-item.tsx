@@ -2,11 +2,14 @@ import {Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Event} from '../../services/types';
 
+import {useAppNavigation} from '../../hooks/useNavigate';
+
 export default function ListItem({data}: {data: Event}) {
   const {id, title, image_url} = data;
 
+  const {navigate} = useAppNavigation();
   const onPress = () => {
-    console.log('event', id);
+    navigate('EventDetail', {id, title});
   };
 
   return (

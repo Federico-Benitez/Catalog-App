@@ -1,9 +1,16 @@
 import {useQuery} from '@tanstack/react-query';
-import getEvents from '../services/events';
+import {getAllEvents, getEvent} from '../services/events';
 
-export function useGetEvents() {
+export function useEvents() {
   return useQuery({
     queryKey: ['events'],
-    queryFn: getEvents,
+    queryFn: getAllEvents,
+  });
+}
+
+export function useEventDetails(id: number) {
+  return useQuery({
+    queryKey: ['event', id],
+    queryFn: () => getEvent(id),
   });
 }

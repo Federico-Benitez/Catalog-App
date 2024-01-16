@@ -2,13 +2,23 @@ import React from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './home';
+import EventDetailScreen from './event-detail';
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Home: undefined;
+  EventDetail: {id: number; title: string};
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const screens = [
   {
-    name: 'home',
+    name: 'Home',
     screen: HomeScreen,
+  },
+  {
+    name: 'EventDetail',
+    screen: EventDetailScreen,
   },
 ] as const;
 
