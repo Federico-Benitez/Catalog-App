@@ -1,5 +1,5 @@
 import API from '../config';
-import {Event, EventResponse} from './types';
+import {Event, EventResponse} from '../types';
 
 const endpoints = {
   events: '/events',

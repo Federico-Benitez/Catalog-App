@@ -1,7 +1,7 @@
 import {Text, Image, StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
 import {useEventDetails} from '../hooks/events';
-import AddToFavouritesButton from '../components/add-to-fav';
+import AddToFavoritesButton from '../components/add-to-fav';
 
 export default function EventDetailScreen({route}) {
   const {params} = route;
@@ -11,10 +11,10 @@ export default function EventDetailScreen({route}) {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>{params.title}</Text>
-      <AddToFavouritesButton />
+      <AddToFavoritesButton />
+      <Image source={{uri: params.image_url}} style={styles.image} />
       {data && (
         <>
-          <Image source={{uri: data?.image_url}} style={styles.image} />
           <Text>{cleanText(data?.description)}</Text>
           <Text style={styles.text}>
             {data.is_sold_out ? 'Is sold out' : 'Is available'}{' '}

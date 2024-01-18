@@ -11,7 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export type RootStackParamList = {
   Events: undefined;
-  EventDetail: {id: number; title: string};
+  EventDetail: {id: number; title: string; image_url: string};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -49,7 +49,7 @@ export default function ScreenStacks() {
       <Tab.Navigator
         screenOptions={({route}) => ({
           tabBarIcon: ({color, size}) => {
-            let iconName = route.name === 'Home' ? 'home' : 'star';
+            let iconName = route.name === 'Home' ? 'home' : 'favorite';
 
             return <MaterialIcons name={iconName} size={size} color={color} />;
           },
