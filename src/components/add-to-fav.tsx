@@ -4,6 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useRoute} from '@react-navigation/native';
 import {useAppDispatch, useAppSelector} from '../store';
 import {toggleEvent} from '../services/event-slice';
+import Animated, {FadeIn} from 'react-native-reanimated';
 
 export default function AddToFavoritesButton() {
   const {params} = useRoute();
@@ -12,8 +13,6 @@ export default function AddToFavoritesButton() {
   const color = isSaved ? 'red' : 'white';
 
   const handlePress = () => {
-    console.log(params);
-
     dispatch(
       toggleEvent({
         id: params.id,
@@ -25,11 +24,13 @@ export default function AddToFavoritesButton() {
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.button}>
-      <MaterialIcons
-        name={`favorite${isSaved ? '' : '-outline'}`}
-        size={20}
-        color={color}
-      />
+      <Animated.View key={color} entering={FadeIn}>
+        <MaterialIcons
+          name={`favorite${isSaved ? '' : '-outline'}`}
+          size={20}
+          color={color}
+        />
+      </Animated.View>
     </TouchableOpacity>
   );
 }
