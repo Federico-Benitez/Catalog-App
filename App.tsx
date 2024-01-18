@@ -1,18 +1,28 @@
 import React from 'react';
+import {Text} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import ScreenStacks from './src/screens';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
+import {PersistGate} from 'redux-persist/integration/react';
+import {Provider} from 'react-redux';
+
+import {persistor, store} from './src/store';
+
 const queryClient = new QueryClient();
 
 function App(): React.JSX.Element {
   return (
-    <NavigationContainer>
-      <QueryClientProvider client={queryClient}>
-        <ScreenStacks />
-      </QueryClientProvider>
-    </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
+        <NavigationContainer>
+          <QueryClientProvider client={queryClient}>
+            <ScreenStacks />
+          </QueryClientProvider>
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 }
 
