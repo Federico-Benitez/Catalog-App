@@ -5,7 +5,7 @@ import HomeScreen from './home';
 import EventDetailScreen from './event-detail';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import FavouritesScreen from './favourites';
+import FavouritesScreen from './favorites';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 

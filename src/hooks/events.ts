@@ -1,10 +1,18 @@
-import {useQuery} from '@tanstack/react-query';
+import {useInfiniteQuery, useQuery} from '@tanstack/react-query';
 import {getAllEvents, getEvent} from '../services/events';
 
 export function useEvents() {
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: ['events'],
+    initialPageParam: 1,
     queryFn: getAllEvents,
+    getNextPageParam: lastPage => {
+      if (lastPage.pagination.next_url) {
+        return lastPage.pagination.current_page + 1;
+      }
+
+      return null;
+    },
   });
 }
 

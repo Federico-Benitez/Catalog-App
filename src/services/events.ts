@@ -5,8 +5,10 @@ const endpoints = {
   events: '/events',
 };
 
-export async function getAllEvents() {
-  const response = await API.get<EventResponse>(endpoints.events);
+export async function getAllEvents({pageParam = 1}) {
+  const response = await API.get<EventResponse>(
+    endpoints.events + `?page=${pageParam}`,
+  );
 
   return response.data;
 }
