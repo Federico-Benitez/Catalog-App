@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
 import ScreenStacks from './src/screens';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
@@ -16,11 +15,9 @@ function App(): React.JSX.Element {
   return (
     <Provider store={store}>
       <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
-        <NavigationContainer>
-          <QueryClientProvider client={queryClient}>
-            <ScreenStacks />
-          </QueryClientProvider>
-        </NavigationContainer>
+        <QueryClientProvider client={queryClient}>
+          <ScreenStacks />
+        </QueryClientProvider>
       </PersistGate>
     </Provider>
   );
