@@ -1,6 +1,6 @@
 import {Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {Event} from '../../services/types';
+import {Event} from '../../types';
 
 import {useAppNavigation} from '../../hooks/useNavigate';
 

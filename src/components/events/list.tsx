@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, View} from 'react-native';
 import React from 'react';
 
-import {Event} from '../../services/types';
+import {Event} from '../../types';
 import ListItem from './list-item';
 
 export default function EventList({data}: {data: Event[]}) {
