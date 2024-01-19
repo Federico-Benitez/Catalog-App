@@ -36,7 +36,7 @@ function Event() {
           key={name}
           name={name}
           component={screen}
-          options={{title: 'Art of Chicago'}}
+          options={{title: 'Art Institute of Chicago'}}
         />
       ))}
     </Stack.Navigator>
