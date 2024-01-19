@@ -4,6 +4,7 @@ interface Event {
   id: number;
   name: string;
   picture: string;
+  date: string;
 }
 interface SavedEvents {
   ids: number[];

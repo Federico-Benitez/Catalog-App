@@ -11,7 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export type RootStackParamList = {
   Events: undefined;
-  EventDetail: {id: number; title: string; image_url: string};
+  EventDetail: {id: number; title: string; image_url: string; date: string};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

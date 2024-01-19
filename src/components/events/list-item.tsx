@@ -9,7 +9,7 @@ export default function ListItem({data}: {data: Event}) {
 
   const {navigate} = useAppNavigation();
   const onPress = () => {
-    navigate('EventDetail', {id, title, image_url});
+    navigate('EventDetail', {id, title, image_url, date: date_display});
   };
 
   return (

@@ -50,7 +50,7 @@ export interface Event {
   end_date: string;
   start_time: string;
   end_time: string;
-  date_display: null;
+  date_display: string;
   door_time: null;
   layout_type: number;
   slug: string;

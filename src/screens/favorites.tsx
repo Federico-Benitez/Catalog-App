@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  useWindowDimensions,
 } from 'react-native';
 import {useAppDispatch, useAppSelector} from '../store';
 import {toggleEvent} from '../services/event-slice';
@@ -21,11 +22,12 @@ export default function FavoritesScreen() {
     id: number;
     title: string;
     image_url: string;
+    date: string;
   }) => {
     navigate('EventDetail', event);
   };
   const onRemove = (id: number) => {
-    dispatch(toggleEvent({id, name: '', picture: ''}));
+    dispatch(toggleEvent({id, name: '', picture: '', date: ''}));
   };
 
   return (
@@ -34,11 +36,15 @@ export default function FavoritesScreen() {
 
       <FlatList
         data={favourites}
+        ListEmptyComponent={<EmptyListMessage />}
         renderItem={({item}) => (
           <View style={styles.item}>
             <View style={{flexDirection: 'row'}}>
               <Image source={{uri: item.picture}} style={styles.image} />
-              <Text style={styles.itemTitle}>{item.name}</Text>
+              <View style={{flex: 1}}>
+                <Text style={styles.itemTitle}>{item.name}</Text>
+                <Text style={styles.itemTitle}>{item.date}</Text>
+              </View>
             </View>
             <View style={styles.itemButtonContainer}>
               <TouchableOpacity onPress={() => onRemove(item.id)}>
@@ -50,6 +56,7 @@ export default function FavoritesScreen() {
                     id: item.id,
                     title: item.name,
                     image_url: item.picture,
+                    date: item.date,
                   })
                 }>
                 <Text style={styles.seeDetails}>See Details</Text>
@@ -59,6 +66,25 @@ export default function FavoritesScreen() {
         )}
         style={styles.list}
       />
+    </View>
+  );
+}
+
+function EmptyListMessage() {
+  const {height} = useWindowDimensions();
+  const {navigate} = useAppNavigation();
+
+  const onRedirect = () => {
+    navigate('Events');
+  };
+  return (
+    <View style={[styles.empty, {height: height * 0.8}]}>
+      <Text style={styles.emptyMessage}>
+        There are currently no events saved.
+      </Text>
+      <TouchableOpacity onPress={onRedirect}>
+        <Text style={styles.redirect}>Go to list of Events</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -108,5 +134,17 @@ const styles = StyleSheet.create({
   },
   remove: {
     color: '#bc420a',
+  },
+  empty: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyMessage: {
+    color: '#4a4a4a',
+    fontSize: 18,
+  },
+  redirect: {
+    marginTop: 20,
+    color: '#2e3cd3',
   },
 });
