@@ -1,5 +1,13 @@
 
-# Getting Started
+# Features
+  - Display events and list them doing paginated requests.
+  - Show event details and allow to save it as favorites
+  - List events that were saved.
+  - Remove events from favorites.
+  - Get a push notification with event information when you added as favorite.
+  - Keep favorites events on device storage.
+
+# Run Project
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
